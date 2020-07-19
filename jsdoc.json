@@ -1,0 +1,63 @@
+{
+  "tags": {
+    "allowUnknownTags": true,
+    "dictionaries": ["jsdoc"]
+  },
+  "source": {
+    "include": ["./src/", "./README.md"],
+    "includePattern": ".js$",
+    "excludePattern": "(./node_modules/|./WshModules/|./test/|.test.js)"
+  },
+  "plugins": ["plugins/markdown"],
+  "opts": {
+    "destination": "./docs/",
+    "encoding": "utf8",
+    "recurse": true,
+    "verbose": true,
+    "template": "./node_modules/docdash"
+  },
+  "markdown": {
+    "parser": "gfm",
+    "hardwrap": true,
+    "idInHeadings": true
+  },
+  "templates": {
+    "cleverLinks": false,
+    "monospaceLinks": false,
+    "default": {
+      "outputSourceFiles": true,
+      "includeDate": false,
+      "useLongnameInNav": true
+    }
+  },
+  "docdash": {
+    "static": true,
+    "sort": true,
+    "disqus": "",
+    "openGraph": {
+      "title": "WshLogger",
+      "type": "website",
+      "image": "https://docs.tuckn.net/WshLogger/img/openGraph-image.png",
+      "site_name": "@tuckn/WshLogger",
+      "url": "https://docs.tuckn.net/WshLogger"
+    },
+    "meta": {
+      "title": "WshLogger",
+      "description": "The logger module for WSH (Windows Script Host) that writes logging messages in a console or a file or Windows-Event-Viewer.",
+      "keyword": "Windows, WSH, WSF, JScript, VBScript, logging, log, WindowsEventViewer"
+    },
+    "search": true,
+    "collapse": false,
+    "wrap": false,
+    "typedefs": true,
+    "removeQuotes": "none",
+    "menu": {
+      "Github repo": {
+        "href": "https://github.com/tuckn/WshLogger",
+        "target": "_blank",
+        "class": "menu-item",
+        "id": "repository"
+      }
+    }
+  }
+}
