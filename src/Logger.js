@@ -29,7 +29,7 @@
   var hasIn = util.hasIn;
   var hasContent = util.hasContent;
   var parseDate = util.createDateString;
-  var parseDatecode = util.parseDatecode;
+  var parseDateLiteral = util.parseDateLiteral;
 
   var logger = Wsh.Logger;
 
@@ -132,7 +132,7 @@
   /**
    * @typedef {object} typeLoggerCreateOptions
    * @property {string} [level=null] - info, success, warn, error
-   * @property {string|_Logger} transportation - console, popup, winEvent, `filepath`. Can use a date string (e.g. "C:\\My log\\${yyyy-MM-dd}.log" -> 2019-10-29.log) or _Logger instance
+   * @property {string|_Logger} transportation - console, popup, winEvent, `filepath`. Can use a date string (e.g. "C:\\My log\\#{yyyy-MM-dd}.log" -> 2019-10-29.log) or _Logger instance
    * @property {string} [encoding] - Default: {@link Wsh.Constants.UTF8}. A log file encoding
    */
 
@@ -158,7 +158,7 @@
       this.transportation = 'FILE';
       dest = path.resolve(dest);
 
-      this.logPath = parseDatecode(dest);
+      this.logPath = parseDateLiteral(dest);
       if (fs.existsSync(this.logPath)) {
         if (fs.statSync(this.logPath).isDirectory()) {
           this.logPath = path.join(this.logPath, parseDate() + '.log');

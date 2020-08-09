@@ -165,7 +165,7 @@ logger.transport();
 ```js
 var logger = Wsh.Logger; // Shorthand
 
-var lggr = logger.create('success/D:\\logs\\foo_{yyyy-MM-dd}.log');
+var lggr = logger.create('success/D:\\logs\\foo_#{yyyy-MM-dd}.log');
 lggr.error('1 Error message');
 lggr.warn('2 Warning message');
 lggr.success('3 Success message');
@@ -183,7 +183,7 @@ Writes the logs into _D:\\logs\\foo_2020-07-19.log_.
 [2020-07-19T13:11:09] success 3 Success message
 ```
 
-If you omit the directory path, for example `'warn/foo_{yyyy-MM-dd}.log'`, the `%CD%` (Current Working Directory) will be applied.
+If you omit the directory path, for example `'warn/foo_#{yyyy-MM-dd}.log'`, the `%CD%` (Current Working Directory) will be applied.
 
 ### Dependency Modules
 

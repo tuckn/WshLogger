@@ -425,7 +425,7 @@ describe('Logger', function () {
     var MM = parseDate('MM');
     var dd = parseDate('dd');
 
-    var logFileNameCode = 'logger-test_${yyyy-MM-dd}.log';
+    var logFileNameCode = 'logger-test_#{yyyy-MM-dd}.log';
     var logFileName = 'logger-test_' + yyyy + '-' + MM + '-' + dd + '.log';
 
     var lggr = logger.create('error/' + logFileNameCode);
