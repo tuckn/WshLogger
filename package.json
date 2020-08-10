@@ -1,7 +1,7 @@
 {
   "name": "@tuckn/WshLogger",
   "description": "The logger module for WSH (Windows Script Host) that writes logging messages in a console or a file or Windows-Event-Viewer.",
-  "version": "2.0.0",
+  "version": "2.0.1",
   "author": "Tuckn <tuckn333+github@gmail.com>",
   "private": false,
   "license": "MIT",
@@ -65,7 +65,8 @@
     "cp-docs-css": "cpy ./assets/styles/jsdoc.css ./docs/styles/",
     "cp-docs-img": "cpy ./assets/img/**/* ./docs/img/",
     "postdocs": "run-p cp-docs-*",
-    "docs": "run-s docs:*"
+    "docs": "run-s docs:*",
+    "up-build-doc": "run-s updateModules build docs"
   },
   "husky": {
     "hooks": {

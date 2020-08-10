@@ -127,7 +127,7 @@ The hierarchy of logging levels are as follows in Highest to Lowest order:
 var logger = Wsh.Logger; // Shorthand
 
 var lggr = logger.create('info/console');
-// Specifyed `console`, it works like console.log.
+// Specified `console`, it works like console.log.
 lggr.error('1 Error message'); // console.error
 lggr.warn('2 Warning message'); // console.log
 lggr.success('3 Success message'); // console.log
