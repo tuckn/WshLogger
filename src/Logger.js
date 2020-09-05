@@ -41,7 +41,7 @@
   };
 
   var lvPriority = {
-    none: 0,
+    off: 0,
     error: 1,
     warn: 2,
     success: 3,
@@ -131,7 +131,7 @@
   // _Logger {{{
   /**
    * @typedef {object} typeLoggerCreateOptions
-   * @property {string} [level=null] - info, success, warn, error
+   * @property {string} [level=null] - debug, info, success, warn, error, off
    * @property {string|_Logger} transportation - console, popup, winEvent, `filepath`. Can use a date string (e.g. "C:\\My log\\#{yyyy-MM-dd}.log" -> 2019-10-29.log) or _Logger instance
    * @property {string} [encoding] - Default: {@link Wsh.Constants.UTF8}. A log file encoding
    */
@@ -242,6 +242,8 @@
       if (lvPriority[this.logLevelResult] > lvPriority[level]) {
         this.logLevelResult = level; // Update the result level
       }
+
+      if (level === 'off') return false;
 
       if (level === 'debug' && process.env.WSH_ENV === 'development') {
         return true;

@@ -57,7 +57,8 @@ describe('Logger', function () {
   test(testName, function () {
     var lggr;
 
-    lggr = logger.create();
+    lggr = logger.create(); // undefined -> info
+    expect(lggr.outputsLog('off')).toBe(false);
     expect(lggr.outputsLog('error')).toBe(true);
     expect(lggr.outputsLog('warn')).toBe(true);
     expect(lggr.outputsLog('success')).toBe(true);
@@ -65,6 +66,7 @@ describe('Logger', function () {
     expect(lggr.outputsLog('debug')).toBe(false);
 
     lggr = logger.create('info');
+    expect(lggr.outputsLog('off')).toBe(false);
     expect(lggr.outputsLog('error')).toBe(true);
     expect(lggr.outputsLog('warn')).toBe(true);
     expect(lggr.outputsLog('success')).toBe(true);
@@ -72,6 +74,7 @@ describe('Logger', function () {
     expect(lggr.outputsLog('debug')).toBe(false);
 
     lggr = logger.create('success');
+    expect(lggr.outputsLog('off')).toBe(false);
     expect(lggr.outputsLog('error')).toBe(true);
     expect(lggr.outputsLog('warn')).toBe(true);
     expect(lggr.outputsLog('success')).toBe(true);
@@ -79,6 +82,7 @@ describe('Logger', function () {
     expect(lggr.outputsLog('debug')).toBe(false);
 
     lggr = logger.create('warn');
+    expect(lggr.outputsLog('off')).toBe(false);
     expect(lggr.outputsLog('error')).toBe(true);
     expect(lggr.outputsLog('warn')).toBe(true);
     expect(lggr.outputsLog('success')).toBe(false);
@@ -86,6 +90,7 @@ describe('Logger', function () {
     expect(lggr.outputsLog('debug')).toBe(false);
 
     lggr = logger.create('error');
+    expect(lggr.outputsLog('off')).toBe(false);
     expect(lggr.outputsLog('error')).toBe(true);
     expect(lggr.outputsLog('warn')).toBe(false);
     expect(lggr.outputsLog('success')).toBe(false);
@@ -93,6 +98,7 @@ describe('Logger', function () {
     expect(lggr.outputsLog('debug')).toBe(false);
 
     lggr = logger.create('unknown');
+    expect(lggr.outputsLog('off')).toBe(false);
     expect(lggr.outputsLog('error')).toBe(true);
     expect(lggr.outputsLog('warn')).toBe(true);
     expect(lggr.outputsLog('success')).toBe(true);
@@ -101,6 +107,7 @@ describe('Logger', function () {
 
     process.env.WSH_ENV = 'development';
     lggr = logger.create('warn');
+    expect(lggr.outputsLog('off')).toBe(false);
     expect(lggr.outputsLog('error')).toBe(true);
     expect(lggr.outputsLog('warn')).toBe(true);
     expect(lggr.outputsLog('success')).toBe(false);

@@ -115,6 +115,7 @@ It was specified `warn` level, `success`, `info` and `debug` are not recorded.
 
 The hierarchy of logging levels are as follows in Highest to Lowest order:
 
+- off
 - error
 - warn
 - success
@@ -184,6 +185,21 @@ Writes the logs into _D:\\logs\\foo_2020-07-19.log_.
 ```
 
 If you omit the directory path, for example `'warn/foo_#{yyyy-MM-dd}.log'`, the `%CD%` (Current Working Directory) will be applied.
+
+### No Logging
+
+```js
+var logger = Wsh.Logger; // Shorthand
+
+var lggr = logger.create('off');
+lggr.error('1 Error message');
+lggr.warn('2 Warning message');
+lggr.success('3 Success message');
+lggr.info('4 Info message');
+lggr.debug('5 Debug message');
+
+logger.transport(); // Non logging
+```
 
 ### Dependency Modules
 
