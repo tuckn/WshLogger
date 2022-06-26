@@ -1,6 +1,6 @@
 # WshLogger
 
-The logger module for WSH (Windows Script Host) that writes logging messages in a console or a file or Windows-Event-Viewer.
+The logger module for WSH (Windows Script Host) writes logging messages in a console or a file or Windows-Event-Viewer.
 
 ## tuckn/WshModeJs basic applications structure
 
@@ -9,9 +9,9 @@ The logger module for WSH (Windows Script Host) that writes logging messages in 
 &emsp;&emsp;├─ [WshConfigStore](https://github.com/tuckn/WshConfigStore) (./dist/module.js)  
 &emsp;&emsp;├─ [WshDotEnv](https://github.com/tuckn/WshDotEnv) (./dist/module.js)  
 &emsp;&emsp;├─ WshLogger - This repository (./dist/module.js)  
-&emsp;&emsp;└─ [WshModeJs](https://github.com/tuckn/WshModeJs) (./dist/bundle.js)
+&emsp;&emsp;└─ [WshModeJs](https://github.com/tuckn/WshModeJs) (./dist/bundle.js)  
 
-WshBasicApps can use all the above modules functions.
+WshBasicApps contains all the above modules.
 
 ## Operating environment
 
@@ -26,7 +26,7 @@ D:\> mkdir MyWshProject
 D:\> cd MyWshProject
 ```
 
-(2) Download this ZIP and unzipping or Use the following `git` command.
+(2) Download this ZIP and unzip or Use the following `git` command.
 
 ```console
 > git clone https://github.com/tuckn/WshLogger.git ./WshModules/WshLogger
@@ -34,12 +34,24 @@ or
 > git submodule add https://github.com/tuckn/WshLogger.git ./WshModules/WshLogger
 ```
 
-(3) Include _.\\WshLogger\\dist\\bundle.js_ into your .wsf file.
-For Example, if your file structure is
+(3) Create your JScript (.js) file. For Example,
 
 ```console
 D:\MyWshProject\
-├─ Run.wsf
+├─ MyScript.js <- Your JScript code will be written in this.
+└─ WshModules\
+    └─ WshLogger\
+        └─ dist\
+          └─ bundle.js
+```
+
+I recommend JScript (.js) file encoding to be UTF-8 [BOM, CRLF].
+
+(4) Create your WSF packaging scripts file (.wsf).
+
+```console
+D:\MyWshProject\
+├─ Run.wsf <- WSH entry file
 ├─ MyScript.js
 └─ WshModules\
     └─ WshLogger\
@@ -47,7 +59,8 @@ D:\MyWshProject\
           └─ bundle.js
 ```
 
-The content of above _Run.wsf_ is
+And you should include _.../dist/bundle.js_ into the WSF file.
+For Example, The content of the above _Run.wsf_ is
 
 ```xml
 <package>
@@ -58,35 +71,9 @@ The content of above _Run.wsf_ is
 </package>
 ```
 
-I recommend this .wsf file encoding to be UTF-8 [BOM, CRLF].
-This allows the following functions to be used in _.\\MyScript.js_.
+I recommend this WSH file (.wsf) encoding to be UTF-8 [BOM, CRLF].
 
-### Together with another WshModeJs Apps
-
-If you want to use it together with another WshModeJs Apps, install as following
-
-```console
-> git clone https://github.com/tuckn/WshModeJs.git ./WshModules/WshModeJs
-> git clone https://github.com/tuckn/WshCommander.git ./WshModules/WshCommander
-> git clone https://github.com/tuckn/WshLogger.git ./WshModules/WshLogger
-or
-> git submodule add https://github.com/tuckn/WshModeJs.git ./WshModules/WshModeJs
-> git submodule add https://github.com/tuckn/WshCommander.git ./WshModules/WshCommander
-> git submodule add https://github.com/tuckn/WshLogger.git ./WshModules/WshLogger
-```
-
-```xml
-<package>
-  <job id = "run">
-    <script language="JScript" src="./WshModules/WshModeJs/dist/bundle.js"></script>
-    <script language="JScript" src="./WshModules/WshCommander/dist/module.js"></script>
-    <script language="JScript" src="./WshModules/WshLogger/dist/module.js"></script>
-    <script language="JScript" src="./MyScript.js"></script>
-  </job>
-</package>
-```
-
-If you have no special circumstances, I recommend using [WshBasicApps](https://github.com/tuckn/WshBasicPackage).
+Awesome! This WSH configuration allows you to use the following functions in JScript (_.\\MyScript.js_).
 
 ## Usage
 
@@ -109,11 +96,11 @@ logger.transport();
 // [2020-07-19T13:11:09] warn    2 Warning message
 ```
 
-It was specified `warn` level, `success`, `info` and `debug` are not recorded.
-
 ### Logging Levels
 
-The hierarchy of logging levels are as follows in Highest to Lowest order:
+As shown above, if you specify `warn` level in the `create` argument, the `success`, `info`, and `debug` defined in the code are not recorded as logs.
+
+The hierarchy of logging levels is as follows in Highest to Lowest order:
 
 - off
 - error
@@ -121,6 +108,8 @@ The hierarchy of logging levels are as follows in Highest to Lowest order:
 - success
 - info
 - debug
+
+For example, if you specify `off`, a log is not recorded.
 
 ### Output Console
 
@@ -184,7 +173,7 @@ Writes the logs into _D:\\logs\\foo_2020-07-19.log_.
 [2020-07-19T13:11:09] success 3 Success message
 ```
 
-If you omit the directory path, for example `'warn/foo_#{yyyy-MM-dd}.log'`, the `%CD%` (Current Working Directory) will be applied.
+If you omit the directory path, for example, `'warn/foo_#{yyyy-MM-dd}.log'`, the `%CD%` (Current Working Directory) will be applied.
 
 ### No Logging
 
@@ -201,9 +190,41 @@ lggr.debug('5 Debug message');
 logger.transport(); // Non logging
 ```
 
+### Together with another WshModeJs Apps
+
+If you want to use it together with other WshModeJs Apps, install as following
+
+```console
+> git clone https://github.com/tuckn/WshModeJs.git ./WshModules/WshModeJs
+> git clone https://github.com/tuckn/WshCommander.git ./WshModules/WshCommander
+> git clone https://github.com/tuckn/WshLogger.git ./WshModules/WshLogger
+or
+> git submodule add https://github.com/tuckn/WshModeJs.git ./WshModules/WshModeJs
+> git submodule add https://github.com/tuckn/WshCommander.git ./WshModules/WshCommander
+> git submodule add https://github.com/tuckn/WshLogger.git ./WshModules/WshLogger
+```
+
+The definition in the WSF packaging scripts file (.wsf) is as follows.
+
+```xml
+<package>
+  <job id = "run">
+    <script language="JScript" src="./WshModules/WshModeJs/dist/bundle.js"></script>
+    <script language="JScript" src="./WshModules/WshCommander/dist/module.js"></script>
+    <script language="JScript" src="./WshModules/WshLogger/dist/module.js"></script>
+    <script language="JScript" src="./MyScript.js"></script>
+  </job>
+</package>
+```
+
+Please note the difference between `.../dist/bundle.js` and `.../dist/module.js`.
+
+I recommend using [WshBasicApps](https://github.com/tuckn/WshBasicPackage).
+That includes all modules.
+
 ### Dependency Modules
 
-You can also use the following useful functions in _.\\MyScript.js_ (JScript).
+You can also use the following helper functions in your JScript (_.\\MyScript.js_).
 
 - [tuckn/WshPolyfill](https://github.com/tuckn/WshPolyfill)
 - [tuckn/WshUtil](https://github.com/tuckn/WshUtil)
