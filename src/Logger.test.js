@@ -19,12 +19,12 @@ var logger = Wsh.Logger;
 
 var parseDate = util.createDateString;
 var includes = util.includes;
-var srr = os.surroundPath;
+var srrd = os.surroundCmdArg;
 var CSCRIPT = os.exefiles.cscript;
 var execFileSync = child_process.execFileSync;
 var execSync = child_process.execSync;
 
-var testCmd = srr(CSCRIPT) + ' ' + srr(__filename) + ' //job:test:Logger';
+var testCmd = srrd(CSCRIPT) + ' ' + srrd(__filename) + ' //job:test:Logger';
 
 var _cb = function (fn/* , args */) {
   var args = Array.from(arguments).slice(1);
