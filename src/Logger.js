@@ -54,7 +54,7 @@
    * @private
    * @param {Array} logs - An Array of logs to parse.
    * @param {object} [options] - Optional parameters.
-   * @param {boolean} [options.eolChar] - Default is {@link https://docs.tuckn.net/WshOS/Wsh.OS.html#.EOL|Wsh.OS.EOL}.
+   * @param {boolean} [options.eolChar] - Default is {@link https://tuckn.net/docs/WshOS/Wsh.OS.html#.EOL|Wsh.OS.EOL}.
    * @returns {void}
    */
   function _parseLogsToStr (logs, options) {

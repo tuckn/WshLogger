@@ -37,9 +37,9 @@
     "openGraph": {
       "title": "WshLogger",
       "type": "website",
-      "image": "https://docs.tuckn.net/WshLogger/img/openGraph-image.png",
+      "image": "https://tuckn.net/docs/WshLogger/img/openGraph-image.png",
       "site_name": "@tuckn/WshLogger",
-      "url": "https://docs.tuckn.net/WshLogger"
+      "url": "https://tuckn.net/docs/WshLogger/"
     },
     "meta": {
       "title": "WshLogger",

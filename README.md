@@ -9,7 +9,7 @@ The logger module for WSH (Windows Script Host) writes logging messages in a con
 &emsp;&emsp;├─ [WshConfigStore](https://github.com/tuckn/WshConfigStore) (./dist/module.js)  
 &emsp;&emsp;├─ [WshDotEnv](https://github.com/tuckn/WshDotEnv) (./dist/module.js)  
 &emsp;&emsp;├─ WshLogger - This repository (./dist/module.js)  
-&emsp;&emsp;└─ [WshModeJs](https://github.com/tuckn/WshModeJs) (./dist/bundle.js)  
+&emsp;&emsp;└─ [WshModeJs](https://github.com/tuckn/WshModeJs) (./dist/bundle.js)
 
 WshBasicApps contains all the above modules.
 
@@ -148,7 +148,7 @@ lggr.debug('5 Debug message');
 logger.transport();
 ```
 
-![WshLogger/Popup Window](https://docs.tuckn.net/WshLogger/img/log-popup-window.png)
+![WshLogger/Popup Window](https://tuckn.net/docs/WshLogger/img/log-popup-window.png)
 
 ### Output File
 
@@ -238,17 +238,17 @@ You can also use the following helper functions in your JScript (_.\\MyScript.js
 
 ## Documentation
 
-See all specifications [here](https://docs.tuckn.net/WshLogger) and also below.
+See all specifications [here](https://tuckn.net/docs/WshLogger/) and also below.
 
-- [WshPolyfill](https://docs.tuckn.net/WshPolyfill)
-- [WshUtil](https://docs.tuckn.net/WshUtil)
-- [WshPath](https://docs.tuckn.net/WshPath)
-- [WshOS](https://docs.tuckn.net/WshOS)
-- [WshFileSystem](https://docs.tuckn.net/WshFileSystem)
-- [WshProcess](https://docs.tuckn.net/WshProcess)
-- [WshChildProcess](https://docs.tuckn.net/WshChildProcess)
-- [WshNet](https://docs.tuckn.net/WshNet)
-- [WshModeJs](https://docs.tuckn.net/WshModeJs)
+- [WshPolyfill](https://tuckn.net/docs/WshPolyfill/)
+- [WshUtil](https://tuckn.net/docs/WshUtil/)
+- [WshPath](https://tuckn.net/docs/WshPath/)
+- [WshOS](https://tuckn.net/docs/WshOS/)
+- [WshFileSystem](https://tuckn.net/docs/WshFileSystem/)
+- [WshProcess](https://tuckn.net/docs/WshProcess/)
+- [WshChildProcess](https://tuckn.net/docs/WshChildProcess/)
+- [WshNet](https://tuckn.net/docs/WshNet/)
+- [WshModeJs](https://tuckn.net/docs/WshModeJs/)
 
 ## License
 
